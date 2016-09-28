@@ -1,12 +1,11 @@
 ## pysockets
-<br>
 #### Required:
 _Two Linux machines with python3.4 installed._
 <br>
 <br>
 #### Usage:
 ##### On your first machine which will be the host:
-Edit the socketserver file and replace the IP address behind "host" with the address of this machine.
+Edit the socketserver file and on line 12 replace the IP address behind "host" with the address of this machine.
 <br>
 <br>
 Make the script executable: `chmod +x socketserver`
@@ -15,8 +14,7 @@ Run the script: `./socketserver`
 <br>
 <br>
 ##### Now on your second machine which will connect to the host:
-<br>
-Edit the socketclient file and replace the IP address behind "host" with the address of the _remote_ machine.
+Edit the socketclient file and on line 12 replace the IP address behind "host" with the address of the _remote_ machine.
 <br>
 <br>
 Make the script executable: `chmod +x socketclient`
